@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.nombre }} - CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- SECCIÓN DE INICIO (HERO) - Con clases para animación de entrada -->
+    <section id="inicio" class="hero">
+        <!-- Estas clases 'fade-in' y 'fade-in-up' se añaden por JavaScript -->
+        <img src="{{ url_for('static', filename='img/Leo.png') }}" alt="Foto de perfil de {{ data.nombre }}" class="profile-pic">
+        <h1 class="hero-title">{{ data.nombre }}</h1>
+        <h2 class="hero-subtitle">{{ data.titulo }}</h2>
+        <p class="hero-summary">{{ data.resumen }}</p>
+    </section>
+
+    <!-- SECCIÓN DE EXPERIENCIA PROFESIONAL - Con animación de entrada por scroll -->
+    <section id="experiencia" class="content-section">
+        <h2>Experiencia Profesional</h2>
+        <div class="timeline">
+            {% for item in data.experiencia %}
+            <!-- Clase 'timeline-item' es el target para la animación -->
+            <div class="timeline-item">
+                <h3>{{ item.puesto }} en {{ item.empresa }}</h3>
+                <p class="dates">{{ item.fechas }}</p>
+                <ul>
+                    {% for tarea in item.tareas %}
+                    <li>{{ tarea }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE HABILIDADES TÉCNICAS - Ahora como lista simple -->
+    <section id="habilidades" class="content-section">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skill-container">
+            <ul class="simple-skill-list">
+                {% for skill in data.habilidades_tecnicas %}
+                <li>{{ skill.nombre }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE PROYECTOS -->
+    <section id="proyectos" class="content-section">
+        <h2>Proyectos Destacados</h2>
+        <div class="project-grid">
+            {% if data.proyectos %}
+            <!-- Renderizar proyectos si existen -->
+            {% else %}
+            <div class="project-card">
+                <h3>(Ejemplo) Proyecto Web CV</h3>
+                <p>Curriculum Vitae interactivo desarrollado con Flask, HTML, CSS y JavaScript, implementando animaciones de entrada y diseño responsive.</p>
+                <a href="#" target="_blank">Ver Proyecto</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CONTACTO (FOOTER) -->
+    <section id="contacto" class="content-section footer">
+        <h2>Contacto</h2>
+        <div class="contact-links">
+            <p>Email: <a href="mailto:{{ data.contacto.email }}">{{ data.contacto.email }}</a></p>
+            <p>LinkedIn: <a href="{{ data.contacto.linkedin_url }}" target="_blank">Mi Perfil de LinkedIn</a></p>
+            <p>GitHub: <a href="{{ data.contacto.github_url }}" target="_blank">Mi GitHub</a></p>
+        </div>
+        <p class="copyright">&copy; 2024 {{ data.nombre }}. Todos los derechos reservados.</p>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
