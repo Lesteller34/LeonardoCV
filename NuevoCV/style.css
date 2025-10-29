@@ -1,0 +1,261 @@
+/* === RESET Y BASE === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+.content-section {
+    padding: 60px 10%;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+h2 {
+    text-align: center;
+    color: #00bcd4;
+    margin-bottom: 40px;
+    font-size: 2em;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* === SECCIÓN HERO === */
+.hero {
+    background-color: #2c3e50;
+    background-image: url('fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px 10%;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.profile-pic {
+    z-index: 10;
+    position: relative;
+    border: 7px solid #00bcd4;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(187, 184, 184, 0.5);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    color: #496acb;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.hero h2 {
+    font-size: 1.5em;
+    color: #eee0e0;
+    margin-top: 5px;
+    font-weight: normal;
+    border-bottom: 2px solid #00bcd4;
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 20px auto 0;
+    line-height: 1.6;
+    font-size: 1.1em;
+    color: #f0e2e2;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.profile-pic.fade-in-up {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+.fade-in {
+    opacity: 1 !important;
+}
+
+/* === TIMELINE (EXPERIENCIA) === */
+.timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    padding: 0 20px 20px 40px;
+    position: relative;
+    border-left: 3px solid #ccc;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item:nth-child(1) { transition-delay: 0s; }
+.timeline-item:nth-child(2) { transition-delay: 0.15s; }
+.timeline-item:nth-child(3) { transition-delay: 0.3s; }
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    width: 14px;
+    height: 14px;
+    background-color: #00bcd4;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item h3 {
+    margin-top: 0;
+    color: #1a1a1a;
+}
+
+.timeline-item .dates {
+    color: #555;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.timeline-item ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* === HABILIDADES === */
+.skill-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.simple-skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.simple-skill-list li {
+    background-color: #00bcd4;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.simple-skill-list li:hover {
+    background-color: #0097a7;
+    transform: translateY(-2px);
+}
+
+/* === PROYECTOS === */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.project-card a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+/* === FOOTER === */
+.footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 40px 10%;
+    border-bottom: none;
+}
+
+.contact-links p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.footer a {
+    color: #00bcd4;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #e0f7fa;
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+}
